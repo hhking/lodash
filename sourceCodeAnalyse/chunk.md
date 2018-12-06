@@ -1,23 +1,9 @@
-import slice from './slice.js'
+# chunk
+> 就像是分蛋糕，把蛋糕切成一定大小的几块。可能切到最后，剩下一块比较小。
+> 运用场景：把耗时长、影响性能的任务，拆分成更小的块，来分步来完成。
 
-/**
- * Creates an array of elements split into groups the length of `size`.
- * If `array` can't be split evenly, the final chunk will be the remaining
- * elements.
- *
- * @since 3.0.0
- * @category Array
- * @param {Array} array The array to process.
- * @param {number} [size=1] The length of each chunk
- * @returns {Array} Returns the new array of chunks.
- * @example
- *
- * chunk(['a', 'b', 'c', 'd'], 2)
- * // => [['a', 'b'], ['c', 'd']]
- *
- * chunk(['a', 'b', 'c', 'd'], 3)
- * // => [['a', 'b', 'c'], ['d']]
- */
+## 源码注释
+```
 function chunk(array, size) {
   // Math.max 返回一组数中的最大值；这里保证 size 大于等于 0.
   size = Math.max(size, 0)
@@ -46,5 +32,11 @@ function chunk(array, size) {
   }
   return result
 }
+```
 
-export default chunk
+## 实现思路
+把数组分割成几个给定大小的数组, 再把这些数组组成新的数组。
+1. 分割的数组是新数组的子数组
+1. 确定分成几组，也就是新数组的长度
+1. 使用 slice 方法来截取每个子数组
+

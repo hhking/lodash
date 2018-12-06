@@ -23,13 +23,32 @@ function slice(array, start, end) {
 
   let index = -1
   const result = new Array(length)
-  while (index++ < length) {
+  while (++index < length) {
     result[index] = array[index + start]
   }
   return result
 }
 
-let a = Array(5);
+function chunk(array, size) {
+  size = Math.max(size, 0);
+  const length = array == null ? 0 : array.length;
 
-let result = slice(a, 0, 2);
+  if (!length || size < 1) {
+    return [];
+  }
+
+  let index = 0;
+  let resIndex = 0;
+  const result = new Array(Math.ceil(length / size));
+
+  while (index < length) {
+    result[resIndex++] = slice(array, index, (index += size));
+  }
+
+  return result;
+}
+
+let a = ['a', 'b', 'c', 'd'];
+
+let result = chunk(a, 3);
 console.log(result);
