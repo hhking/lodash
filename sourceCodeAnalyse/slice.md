@@ -1,7 +1,9 @@
 # slice
 
 > 这个方法是用来代替原生的 Array.slice 方法的。
+
 > 原因：原生 Array.slice 是把数组当成稀疏数组处理；lodash 的 slice 是把数组当成密集数组处理。
+
 > 详情：[issue: why not the 'baseslice' func use Array.slice(), loop faster than slice?](https://github.com/lodash/lodash/issues/2850)
 
 ## 密集数组和稀疏数组
@@ -9,7 +11,7 @@
 
 ## 源码注释
 [slice 注释](https://github.com/hhking/lodash/blob/7ab6b07f1b128448d083d1421713e6dc27fb0b98/slice.js#L21)
-```
+```js
 function slice(array, start, end) {
   // array == null 使用非全等，可以同时判断 null 和 undefined。 用于判断是否传参
   let length = array == null ? 0 : array.length
