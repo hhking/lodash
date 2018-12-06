@@ -20,7 +20,6 @@
  */
 function slice(array, start, end) {
   // array == null 使用非全等，可以同时判断 null 和 undefined。 用于判断是否传参
-  //
   let length = array == null ? 0 : array.length
   // length 为 0 或者 undefined 时
   if (!length) {
@@ -55,10 +54,11 @@ function slice(array, start, end) {
   length = start > end ? 0 : ((end - start) >>> 0)
   start >>>= 0
 
-  // index 从 -1 开始时因为首次循环就会赋值成 0
+  // index 从 -1 开始是因为前置 ++ 是递增后返回值，所以首次循环就会赋值成 0
   let index = -1
   // result 为新数组
   const result = new Array(length)
+  // ++index: 前置 ++ , 先递增后返回值与 length 对比。相当于在每个循环体后面进行递增。从而不包含 end 索引的值。如果使用后置 ++，则先比较后题赠，结果会包含 end
   // 从 start 开始，截取 length 长度
   // lodash 的 slice 是把数组当成密集数组处理的，确保返回的数组是密集数组
   // 这里是通过循环索引取值的，所以如果是稀疏数组，则如果数组对应位置是没有值(empty)时，通过索引取值会返回 'undefined'，这并不表示原数组对应的值就是 undefined
