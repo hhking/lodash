@@ -1,20 +1,14 @@
-/**
- * Creates an array with all falsey values removed. The values `false`, `null`,
- * `0`, `""`, `undefined`, and `NaN` are falsey.
- *
- * @since 0.1.0
- * @category Array
- * @param {Array} array The array to compact.
- * @returns {Array} Returns the new array of filtered values.
- * @example
- *
- * compact([0, 1, false, 2, '', 3])
- * // => [1, 2, 3]
- */
+# compact
+
+创建一个新数组，包含原数组中的所有非假值元素。`false`, `null`, `0`, `""`, `undefined`, `NaN` 都是假值。
+
+## 源码注释
+```js
 function compact(array) {
   let resIndex = 0
   const result = []
 
+  // 参数省略, `null`, `undefined` 直接返回空数组
   if (array == null) {
     return result
   }
@@ -30,3 +24,11 @@ function compact(array) {
 }
 
 export default compact
+```
+
+## 核心点
+- ES6 `for...of` 遍历方法
+- `Iterator` 遍历器
+
+## 参考链接
+> [Iterator 和 for...of 循环](http://es6.ruanyifeng.com/#docs/iterator)
