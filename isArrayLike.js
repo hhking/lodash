@@ -24,6 +24,12 @@ import isLength from './isLength.js'
  * // => false
  */
 function isArrayLike(value) {
+  /**
+   * lodash 这里对类数组的定义：
+   * 1. 不为 null
+   * 2. 不为 `function`  (function 的 length 属性表示函数的形参个数)
+   * 3. length 属性是合法类数组长度值（大于等于 0, 小于等于最大安全整数的整数）
+   */
   return value != null && typeof value != 'function' && isLength(value.length)
 }
 
